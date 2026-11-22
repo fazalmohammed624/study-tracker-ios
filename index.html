@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Study Tracker">
+  <title>Study Tracker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="eyebrow">YOUR WORKSPACE</p>
+      <h1>Study Tracker</h1>
+      <p class="sub">Learn consistently. Build. Start freelancing.</p>
+    </div>
+    <button id="addTaskTop" class="icon-btn" aria-label="Add task">＋</button>
+  </header>
+
+  <main>
+    <section class="summary panel">
+      <div class="summary-head">
+        <div><p class="eyebrow">OVERALL PROGRESS</p><div class="big" id="percent">0%</div></div>
+        <div class="count" id="count">0 / 0 tasks</div>
+      </div>
+      <div class="progress"><span id="progressBar"></span></div>
+      <div class="stats">
+        <div><strong id="remaining">0</strong><span>Remaining</span></div>
+        <div><strong id="completed">0</strong><span>Completed</span></div>
+        <div><strong id="stages">6</strong><span>Stages</span></div>
+      </div>
+    </section>
+
+    <section class="panel daily">
+      <div class="section-head">
+        <div><p class="eyebrow">DAILY FOCUS</p><h2>Study sessions</h2></div>
+        <input id="studyDate" type="date" aria-label="Study date">
+      </div>
+      <div class="session-grid" id="sessions"></div>
+      <div class="daily-foot"><span id="sessionCount">0 of 4 complete</span><button id="resetSessions" class="text-btn">Reset sessions</button></div>
+      <label class="field-label" for="dailyNotes">What did you learn today?</label>
+      <textarea id="dailyNotes" rows="3" placeholder="What did you learn? What was difficult? What is next?"></textarea>
+      <button id="saveNotes" class="secondary full">Save daily notes</button>
+    </section>
+
+    <section class="tasks-head">
+      <div><p class="eyebrow">YOUR ROADMAP</p><h2>Learning checklist</h2></div>
+      <button id="addTask" class="primary">＋ Add task</button>
+    </section>
+    <div id="roadmap"></div>
+
+    <section class="panel custom">
+      <p class="eyebrow">QUICK NOTES</p>
+      <h2>Keep your next step visible</h2>
+      <textarea id="nextStep" rows="2" placeholder="Example: Tomorrow, finish webhook signature verification."></textarea>
+      <button id="saveNext" class="secondary full">Save next step</button>
+    </section>
+    <p class="footnote">Your tasks and notes are saved on this device. Export a backup regularly, especially before clearing browser data.</p>
+    <div class="backup-row">
+      <button id="exportData" class="secondary">Export backup</button>
+      <label class="secondary import-label">Import backup<input id="importData" type="file" accept="application/json"></label>
+    </div>
+  </main>
+
+  <dialog id="taskDialog">
+    <form method="dialog" id="taskForm">
+      <div class="dialog-head"><h2>Add a task</h2><button class="icon-btn" value="cancel" aria-label="Close">×</button></div>
+      <label class="field-label">Task name<input id="taskName" required maxlength="120" placeholder="What do you need to learn?"></label>
+      <label class="field-label">Stage
+        <select id="taskStage"></select>
+      </label>
+      <div class="dialog-actions"><button class="secondary" value="cancel">Cancel</button><button id="saveTask" class="primary" value="default">Add task</button></div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
